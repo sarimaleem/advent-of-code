@@ -2,24 +2,21 @@ use std::fs;
 
 fn main() {
     let file_path = "./input.txt";
-    let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
+    let contents = fs::read_to_string(file_path).unwrap();
     let mut totals = Vec::new();
 
     let mut cur_total = 0;
     for line in contents.lines() {
-        if line == "" {
+        if line.is_empty() {
             totals.push(cur_total);
             cur_total = 0;
         } else {
-            let num: i32 = line.parse().unwrap();
-            cur_total += num;
+            cur_total +=  line.parse::<i32>().unwrap();
         }
     }
 
-    let max = totals.iter().max().unwrap();
-    println!("{}", max);
-
     totals.sort_by(|a, b| b.cmp(a));
+    let max = totals[0];
     let first_three_sum: i32 = totals[0..3].iter().sum();
-    println!("{}",  first_three_sum)
+    println!("{} {}", max, first_three_sum)
 }
