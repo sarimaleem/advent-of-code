@@ -5,14 +5,14 @@ fn main() {
     let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
     let mut totals = Vec::new();
 
-    let mut total = 0;
+    let mut cur_total = 0;
     for line in contents.lines() {
         if line == "" {
-            totals.push(total);
-            total = 0;
+            totals.push(cur_total);
+            cur_total = 0;
         } else {
             let num: i32 = line.parse().unwrap();
-            total += num;
+            cur_total += num;
         }
     }
 
