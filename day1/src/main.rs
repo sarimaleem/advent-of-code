@@ -17,6 +17,6 @@ fn main() {
 
     totals.sort_by(|a, b| b.cmp(a));
     let max = totals[0];
-    let first_three_sum: i32 = totals[0..3].iter().sum();
+    let first_three_sum: i32 = totals.iter().take(3).sum();
     println!("{} {}", max, first_three_sum)
 }
