@@ -1,6 +1,5 @@
 use std::fs;
 
-
 enum Selection {
     Rock,
     Paper,
@@ -112,6 +111,7 @@ fn get_points(choice1: Selection, choice2: Selection) -> u32 {
 }
 
 fn get_choice(choice1: Selection, choice2: RoundResult) -> Selection {
+    
     return match choice1 {
        Selection::Rock => match choice2 {
         RoundResult::Win => Selection::Paper,
