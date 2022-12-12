@@ -37,7 +37,7 @@ fn challenge1(input: &String) -> i32 {
         .sum()
 }
 
-fn challenge2(input: &String) -> i32 {
+fn challenge2(input: &String) -> u32 {
     input
         .lines()
         .map(|line| line.as_bytes())
@@ -49,13 +49,13 @@ fn challenge2(input: &String) -> i32 {
                 .iter()
                 .filter(|letter| a.contains(letter) && b.contains(letter))
                 .collect();
-            let result = intersection.get(0).unwrap() as &u8;
-            *result as i32
+            return **intersection.get(0).unwrap();
         })
         .map(|letter| match letter {
-            65..=90 => letter - 65 + 27,
-            97..=122 => letter - 97 + 1,
+            b'A'..=b'Z' => letter - b'A' + 27,
+            b'a'..=b'z' => letter - b'a' + 1,
             _ => panic!("Invalid character"),
         })
+        .map(u32::from)
         .sum()
 }
