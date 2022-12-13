@@ -12,8 +12,7 @@ fn main() {
 fn challenge1(input: &String) -> u32 {
     input
         .lines()
-        .flat_map(|line| line.split(",").collect::<Vec<&str>>())
-        .flat_map(|line| line.split("-").collect::<Vec<&str>>())
+        .flat_map(|line| line.split(|c| c == ',' || c == '-').collect::<Vec<&str>>())
         .map(|l| l.parse::<u32>().unwrap())
         .tuples()
         .map(|(r1_start, r1_end, r2_start, r2_end)| {
@@ -26,8 +25,7 @@ fn challenge1(input: &String) -> u32 {
 fn challenge2(input: &String) -> u32 {
     input
         .lines()
-        .flat_map(|line| line.split(",").collect::<Vec<&str>>())
-        .flat_map(|line| line.split("-").collect::<Vec<&str>>())
+        .flat_map(|line| line.split(|c| c == ',' || c == '-').collect::<Vec<&str>>())
         .map(|l| l.parse::<u32>().unwrap())
         .tuples()
         .map(|(r1_start, r1_end, r2_start, r2_end)| {
